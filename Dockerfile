@@ -33,4 +33,4 @@ ENV GNU_INSTALL_ROOT="/tmp/gcc-arm-none-eabi-7-2018-q2-update/bin/"
 ENV GNU_VERSION="7.3.1"
 
 WORKDIR /opt/project/armgcc
-CMD ["make", "-j"]
+CMD ["make"]
