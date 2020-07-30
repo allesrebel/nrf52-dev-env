@@ -18,19 +18,19 @@ RUN   apt-get update && apt-get -y install \
 
 # Install the Toolchain
 WORKDIR /tmp
-ARG NRF_TOOLCHAIN=https://developer.arm.com/-/media/Files/downloads/gnu-rm/7-2018q2/gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2
+ARG NRF_TOOLCHAIN=https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
 RUN wget -P /tmp -q --show-progress $NRF_TOOLCHAIN
-RUN tar -xvjf /tmp/gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2
+RUN tar -xvjf /tmp/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
 
 # Grab a copy of the SDK (Static, from nordic)
-ARG NORDIC_SDK=https://www.nordicsemi.com/-/media/Software-and-other-downloads/SDKs/nRF5/Binaries/nRF5SDK160098a08e2.zip
+ARG NORDIC_SDK=https://www.nordicsemi.com/-/media/Software-and-other-downloads/SDKs/nRF5/Binaries/nRF5SDK17009d13099.zip
 RUN wget -P /tmp -q --show-progress $NORDIC_SDK
-RUN unzip /tmp/nRF5SDK160098a08e2.zip -d nRF5_SDK_16.0.0
+RUN unzip /tmp/nRF5SDK17009d13099.zip -d .
 
 # Set up Env Vars
-ENV SDK_ROOT="/tmp/nRF5_SDK_16.0.0"
-ENV GNU_INSTALL_ROOT="/tmp/gcc-arm-none-eabi-7-2018-q2-update/bin/"
-ENV GNU_VERSION="7.3.1"
+ENV SDK_ROOT="/tmp/nRF5_SDK_17.0.0_9d13099"
+ENV GNU_INSTALL_ROOT="/tmp/gcc-arm-none-eabi-9-2019-q4-major/bin/"
+ENV GNU_VERSION="9.2019q4.major"
 
 WORKDIR /opt/project/armgcc
 CMD ["make"]
