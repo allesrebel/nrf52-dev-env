@@ -3,8 +3,7 @@ FROM ubuntu:latest
 
 # before doing anything let's update the image as needed
 USER root
-
-ARG DEBIAN_FRONTEND=noninteractive
+ENV MAKEFILE_DIR=/opt/project/armgcc
 
 # Update Repos for basic stuff
 RUN   apt-get update && apt-get -y install \
@@ -32,5 +31,5 @@ ENV SDK_ROOT="/tmp/nRF5_SDK_17.0.0_9d13099"
 ENV GNU_INSTALL_ROOT="/tmp/gcc-arm-none-eabi-9-2019-q4-major/bin/"
 ENV GNU_VERSION="9.2019q4.major"
 
-WORKDIR /opt/project/armgcc
-CMD ["make"]
+ENTRYPOINT ["/bin/sh", "-c", "exec make -w -C $MAKEFILE_DIR"]
+CMD ["-j"]

@@ -35,10 +35,10 @@ The environment variables will be automatically set up and will attempt to execu
 
 ## Building a Specified Project
 Running the image can be done with a standard run command with the
-project to build with the `-v` command. The container expects the
-project to be mounted to `/opt/` directory. For example:
+project to build with the `-v` command. The container needs the
+directory of the project makefile. Supply this with the `MAKEFILE_DIR` enviroment variable.
 
-* `docker run -v (Path to project):/opt/ nrf52-builder`
+* `docker run -v (Path to project):(mount_location) -e MAKEFILE_DIR=(mount_location) nrf52-builder`
 
 ## Interactively using the container
 In situations where direct control of the toolchain is required
