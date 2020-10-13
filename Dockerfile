@@ -22,12 +22,12 @@ RUN wget -P /tmp -q --show-progress $NRF_TOOLCHAIN
 RUN tar -xvjf /tmp/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
 
 # Grab a copy of the SDK (Static, from nordic)
-ARG NORDIC_SDK=https://www.nordicsemi.com/-/media/Software-and-other-downloads/SDKs/nRF5/Binaries/nRF5SDK17009d13099.zip
+ARG NORDIC_SDK=https://www.nordicsemi.com/-/media/Software-and-other-downloads/SDKs/nRF5/Binaries/nRF5SDK1702d674dde.zip
 RUN wget -P /tmp -q --show-progress $NORDIC_SDK
-RUN unzip /tmp/nRF5SDK17009d13099.zip -d .
+RUN unzip /tmp/nRF5SDK1702d674dde.zip -d .
 
 # Set up Env Vars
-ENV SDK_ROOT="/tmp/nRF5_SDK_17.0.0_9d13099"
+ENV SDK_ROOT="/tmp/nRF5_SDK_17.0.2_d674dde"
 ENV GNU_INSTALL_ROOT="/tmp/gcc-arm-none-eabi-9-2019-q4-major/bin/"
 ENV GNU_VERSION="9.2019q4.major"
 
